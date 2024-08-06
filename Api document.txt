@@ -1,0 +1,140 @@
+Overview
+This API allows you to manage a list of users. You can view all users, get a specific user by ID, and add new users.
+
+Base URL
+The base URL for accessing the API:
+
+arduino
+Copy code
+http://127.0.0.1:5000
+Endpoints
+1. Get All Users
+URL: /users
+Method: GET
+Description: This endpoint returns a list of all users.
+Response:
+Status Code: 200 OK
+Body:
+json
+Copy code
+[
+    {
+        "id": 1,
+        "name": "Ali",
+        "age": 30
+    },
+    {
+        "id": 2,
+        "name": "Sara",
+        "age": 25
+    }
+]
+2. Get User by ID
+URL: /users/<int:user_id>
+Method: GET
+Description: This endpoint returns information about a specific user by ID.
+URL Parameters:
+user_id (integer): The ID of the user to retrieve.
+Response:
+Status Code: 200 OK
+Body:
+json
+Copy code
+{
+    "id": 1,
+    "name": "Ali",
+    "age": 30
+}
+Status Code: 404 Not Found
+Body:
+json
+Copy code
+{
+    "message": "User not found"
+}
+3. Add New User
+URL: /users
+Method: POST
+Description: This endpoint adds a new user.
+Request Body:
+The request body should be a JSON object containing the name and age of the new user.
+Example:
+json
+Copy code
+{
+    "name": "Reza",
+    "age": 28
+}
+Response:
+Status Code: 201 Created
+Body:
+json
+Copy code
+{
+    "id": 3,
+    "name": "Reza",
+    "age": 28
+}
+Example Usage
+Get All Users
+Request:
+http
+Copy code
+GET /users HTTP/1.1
+Host: 127.0.0.1:5000
+Response:
+json
+Copy code
+[
+    {
+        "id": 1,
+        "name": "Ali",
+        "age": 30
+    },
+    {
+        "id": 2,
+        "name": "Sara",
+        "age": 25
+    }
+]
+Get User by ID
+Request:
+http
+Copy code
+GET /users/1 HTTP/1.1
+Host: 127.0.0.1:5000
+Response:
+json
+Copy code
+{
+    "id": 1,
+    "name": "Ali",
+    "age": 30
+}
+Add New User
+Request:
+http
+Copy code
+POST /users HTTP/1.1
+Host: 127.0.0.1:5000
+Content-Type: application/json
+
+{
+    "name": "Reza",
+    "age": 28
+}
+Response:
+json
+Copy code
+{
+    "id": 3,
+    "name": "Reza",
+    "age": 28
+}
+This documentation should provide a clear and concise guide on how to interact with your REST API using various endpoints. If you have any further questions or need additional details, feel free to ask!
+
+
+
+
+
+
